@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 35%, #0b1120 100%);
+  display: grid;
+  place-items: center;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.45), transparent 30%),
+              radial-gradient(circle at 80% 30%, rgba(167, 139, 250, 0.5), transparent 28%),
+              radial-gradient(circle at 50% 80%, rgba(45, 212, 191, 0.35), transparent 30%);
+  filter: blur(35px);
+  animation: floatBackground 18s ease-in-out infinite alternate;
+}
+
+body::after {
+  transform: scale(1.25) rotate(20deg);
+  animation-duration: 22s;
+  opacity: 0.8;
+}
+
+body::before {
+  transform: scale(1.1) rotate(-15deg);
+  animation-delay: 2s;
+}
+
+@keyframes floatBackground {
+  0% {
+    transform: translate3d(-2%, 0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(2%, -2%, 0) scale(1.12) rotate(8deg);
+  }
+  100% {
+    transform: translate3d(-1%, 2%, 0) scale(1.04) rotate(-10deg);
+  }
+}
+
+body::selection {
+  background: rgba(255, 255, 255, 0.2);
+}
